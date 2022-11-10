@@ -1,0 +1,45 @@
+name: flutter_food_app1
+description: A Very Good Project created by Very Good CLI.
+version: 1.0.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: 3.0.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+  page_transition: ^2.0.4
+  flutter_svg: ^1.1.5
+  flutter_dotenv: ^5.0.2
+  provider: ^6.0.3
+  flutter_rating_bar: ^4.0.1
+  google_maps_flutter: ^2.2.1
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+  very_good_analysis: ^3.0.1
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/rst_logo/
+    - assets/images/popular_foods/
+    - assets/images/food_items/
+    - assets/icons/drawer_icons/
+    - assets/start_illus/
