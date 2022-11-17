@@ -45,7 +45,7 @@ class PopularFoods extends StatelessWidget {
                   child: Icon(Icons.favorite, color: Colors.redAccent),
                 ),
                 SvgPicture.asset(
-                  ModelList.getPopularFoods()[index].foodItem,
+                  ModelList.getPopularFoods()[index].foodItem!,
                   height: 100,
                 ),
                 Row(
@@ -56,7 +56,7 @@ class PopularFoods extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomTextOne(
-                          text: ModelList.getPopularFoods()[index].foodName,
+                          text: ModelList.getPopularFoods()[index].foodName!,
                           fontWeight: FontWeight.w500,
                         ),
                         const SizedBox(height: 04),

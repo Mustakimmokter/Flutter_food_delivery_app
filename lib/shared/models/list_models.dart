@@ -74,23 +74,26 @@ class ModelList {
       const PopularFoods(
         foodName: 'Burger',
         foodItem: 'assets/images/popular_foods/burger.svg',
+        price: '12.40',
       ),
       const PopularFoods(
         foodName: 'Sushi',
         foodItem: 'assets/images/popular_foods/sushi.svg',
+        price: '10.00',
       ),
       const PopularFoods(
         foodName: 'Pizza',
         foodItem: 'assets/images/popular_foods/pizza.svg',
+        price: '15.30',
       ),
       const PopularFoods(
-        foodName: 'Hot Dog',
-        foodItem: 'assets/images/popular_foods/hot-dog.svg',
-      ),
+          foodName: 'Hot Dog',
+          foodItem: 'assets/images/popular_foods/hot-dog.svg',
+          price: '09.50'),
       const PopularFoods(
-        foodName: 'Chicken',
-        foodItem: 'assets/images/popular_foods/chicken.svg',
-      ),
+          foodName: 'Chicken',
+          foodItem: 'assets/images/popular_foods/chicken.svg',
+          price: '20.10'),
     ];
     return _popularRestaurants;
   }

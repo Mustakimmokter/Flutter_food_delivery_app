@@ -75,7 +75,9 @@ class HomeScreen extends StatelessWidget {
             return CustomNavigationBar(
               selectIndex: navBerProvider.selectedIndex,
               onTap: (index) {
-                navBerProvider.getSelectedIndex(index);
+                index == 2
+                    ? Navigator.pushNamed(context, '/cart')
+                    : navBerProvider.getSelectedIndex(index);
               },
             );
           },

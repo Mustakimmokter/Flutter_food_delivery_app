@@ -1,5 +1,5 @@
 class PopularFoods {
-  const PopularFoods({required this.foodItem, required this.foodName});
+  const PopularFoods({this.price, this.foodItem, this.foodName});
 
-  final String foodItem, foodName;
+  final String? foodItem, foodName, price;
 }
