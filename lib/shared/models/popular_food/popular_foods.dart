@@ -1,5 +1,7 @@
 class PopularFoods {
-  const PopularFoods({this.price, this.foodItem, this.foodName});
+  PopularFoods({this.quantity = 1, this.price, this.foodItem, this.foodName});
 
-  final String? foodItem, foodName, price;
+  final String? foodItem, foodName;
+  late int quantity;
+  final double? price;
 }

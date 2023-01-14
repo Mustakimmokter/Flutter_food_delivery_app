@@ -69,7 +69,7 @@ class _LoaderTwoState extends State<LoaderTwo>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      //color: Colors.white,
       child: Center(
         child: CircularProgressIndicator(
           strokeWidth: 5.0,

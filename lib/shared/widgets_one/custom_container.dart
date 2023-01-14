@@ -43,6 +43,7 @@ class CustomContainer extends StatelessWidget {
             color: color ?? Colors.yellow,
             borderRadius: BorderRadius.circular(radius ?? 100),
             border: Border.all(
+              //strokeAlign: StrokeAlign.outside,
                 width: borderWidth ?? 0,
                 color: borderColor ?? Colors.transparent),
             image: decorationImage,

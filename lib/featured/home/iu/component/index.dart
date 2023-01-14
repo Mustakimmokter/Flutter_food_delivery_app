@@ -1,6 +1,6 @@
 export 'body.dart';
 export 'custom_navigation_bar.dart';
-export 'drawer_n_profile.dart';
+export 'headers.dart';
 export 'filter.dart';
 export 'food_items.dart';
 export 'nearby_restaurants.dart';

@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_food_app1/featured/cart/ui/screen/cart_screen.dart';
-import 'package:flutter_food_app1/featured/favorite/ui/screen/favorite_screen.dart';
 import 'package:flutter_food_app1/featured/home/index.dart';
 import 'package:flutter_food_app1/featured/home/iu/component/index.dart';
-import 'package:flutter_food_app1/featured/offer/ui/screen/offer_screen.dart';
 import 'package:flutter_food_app1/shared/utils/index.dart';
 import 'package:flutter_food_app1/shared/widgets_one/drawer/drawer.dart';
 import 'package:flutter_food_app1/shared/widgets_one/index.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+ const HomeScreen({super.key});
 
-  final List<Widget> _screen = [
-    const HomeScreenBody(),
-    const OfferScreen(),
-    const CartScreen(),
-    const FavoriteScreen(),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
     SizeUtils().init(context);
     return Scaffold(
       backgroundColor: const Color(0xffF8F6F6),
-      body: SizedBox(
-        height: SizeUtils.screenHeight,
-        width: SizeUtils.screenWidth,
-        child: Consumer<NavBerProvider>(
-          builder: (context, navBerProvider, child) {
-            return _screen[navBerProvider.selectedIndex];
-          },
+      body: SafeArea(
+        child: SizedBox(
+          height: SizeUtils.screenHeight,
+          width: SizeUtils.screenWidth,
+          child: Consumer<NavBerProvider>(
+            builder: (context, navBerProvider, child) {
+              return navBerProvider.screen[navBerProvider.selectedScreenIndex];
+            },
+          ),
         ),
       ),
       drawer: Drawer(
@@ -73,11 +67,9 @@ class HomeScreen extends StatelessWidget {
         child: Consumer<NavBerProvider>(
           builder: (context, navBerProvider, child) {
             return CustomNavigationBar(
-              selectIndex: navBerProvider.selectedIndex,
+              selectIndex: navBerProvider.selectedScreenIndex,
               onTap: (index) {
-                index == 2
-                    ? Navigator.pushNamed(context, '/cart')
-                    : navBerProvider.getSelectedIndex(index);
+                navBerProvider.getSelectedScreen(context,index);
               },
             );
           },

@@ -12,7 +12,6 @@ class CustomTextBtn extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: CustomTextOne(
-        fontSize: 15,
         text: text,
         textColor: Colors.deepOrange,
       ),

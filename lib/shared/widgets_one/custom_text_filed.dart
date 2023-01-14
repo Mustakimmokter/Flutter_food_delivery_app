@@ -30,6 +30,7 @@ class CustomTextField extends StatelessWidget {
     this.suffixIcon,
     this.elevation,
     this.shadowColor,
+    this.onSubmitted,
   });
 
   final TextEditingController? textEditingController;
@@ -42,7 +43,7 @@ class CustomTextField extends StatelessWidget {
   final OutlineInputBorder? border, focusBorder;
   final Widget? prefix, suffix, label, prefixIcon, suffixIcon;
   final VoidCallback? onTap;
-  final Function(String)? onChange;
+  final Function(String)? onChange, onSubmitted;
   final Color? focusBorderColor, enabledBorderColor, fillColor, shadowColor;
   final double? focusBorderRadius, enabledBorderRadius, elevation;
 
@@ -57,6 +58,7 @@ class CustomTextField extends StatelessWidget {
         keyboardType: textInputType,
         style: textStyle,
         onTap: onTap,
+        onSubmitted: onSubmitted,
         onChanged: onChange,
         obscureText: obscureText ?? false,
         obscuringCharacter: obscuringCharacter ?? '*',

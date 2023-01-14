@@ -71,29 +71,31 @@ class ModelList {
   // Popular Food item
   static List<PopularFoods> getPopularFoods() {
     final _popularRestaurants = [
-      const PopularFoods(
+      PopularFoods(
         foodName: 'Burger',
         foodItem: 'assets/images/popular_foods/burger.svg',
-        price: '12.40',
+        price: 2.40,
       ),
-      const PopularFoods(
+      PopularFoods(
         foodName: 'Sushi',
         foodItem: 'assets/images/popular_foods/sushi.svg',
-        price: '10.00',
+        price: 3.00,
       ),
-      const PopularFoods(
+      PopularFoods(
         foodName: 'Pizza',
         foodItem: 'assets/images/popular_foods/pizza.svg',
-        price: '15.30',
+        price: 5.30,
       ),
-      const PopularFoods(
-          foodName: 'Hot Dog',
-          foodItem: 'assets/images/popular_foods/hot-dog.svg',
-          price: '09.50'),
-      const PopularFoods(
-          foodName: 'Chicken',
-          foodItem: 'assets/images/popular_foods/chicken.svg',
-          price: '20.10'),
+      PopularFoods(
+        foodName: 'Hot Dog',
+        foodItem: 'assets/images/popular_foods/hot-dog.svg',
+        price: 4.50,
+      ),
+      PopularFoods(
+        foodName: 'Chicken',
+        foodItem: 'assets/images/popular_foods/chicken.svg',
+        price: 2.10,
+      ),
     ];
     return _popularRestaurants;
   }

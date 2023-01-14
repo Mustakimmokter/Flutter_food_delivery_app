@@ -17,6 +17,18 @@ class FilterProvider extends ChangeNotifier {
   List<FoodName> get tagItems => _tagItems;
   bool get showMore => _showMore;
 
+
+  void getClearFilter(){
+    _dropDownValue = 'Most Popular';
+    _rating = 4;
+    _tagItems[2].isItem = true;
+    //_tagItems[index].isItem = false;
+    _currentRangeValues = const RangeValues(2, 100);
+    notifyListeners();
+
+  }
+
+
   // Dropdown
   void getDropdown(String value) {
     _dropDownValue = value;
