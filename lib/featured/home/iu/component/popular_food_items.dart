@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_app1/shared/models/index.dart';
-import 'package:flutter_food_app1/shared/models/list_models.dart';
 import 'package:flutter_food_app1/shared/widgets_one/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -11,10 +10,12 @@ class PopularFoodsList extends StatelessWidget {
     required this.foodList,
     required this.onChange,
     required this.addToFav, required this.addCart,
+    this.isFavorite = false,
   });
   final int currentIndex;
   final List<PopularFoods> foodList;
   final Function(int) onChange, addToFav, addCart;
+  final bool? isFavorite;
 
   final PageController pageController = PageController(
     viewportFraction: .55,
@@ -31,7 +32,7 @@ class PopularFoodsList extends StatelessWidget {
         height: 255,
         width: double.infinity,
         child: PageView.builder(
-          itemCount: ModelList.getPopularFoods().length,
+          itemCount: foodList.length,
           controller: pageController,
           padEnds: false,
           onPageChanged: onChange,
@@ -62,10 +63,10 @@ class PopularFoodsList extends StatelessWidget {
                   Align(
                     alignment: Alignment.topRight,
                     child: GestureDetector(
-                      child: const Icon(
-                        Icons.favorite,
+                      child: Icon(
+                        isFavorite!? Icons.favorite_outline: Icons.favorite,
                         color: Colors.redAccent,
-                        size: 20,
+                        size: 22,
                       ),
                       onTap: () {
                         addToFav(index);

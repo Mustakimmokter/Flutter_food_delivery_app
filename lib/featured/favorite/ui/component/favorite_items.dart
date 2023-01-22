@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_app1/shared/widgets_one/index.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CartItems extends StatelessWidget {
-  const CartItems({
+class FavoriteItems extends StatelessWidget {
+  const FavoriteItems({
     super.key,
-    required this.increaseItem,
-    required this.decreaseItem,
+    required this.deleteFavorite,
     this.index,
     this.foodItem,
     this.foodName,
@@ -17,7 +16,7 @@ class CartItems extends StatelessWidget {
   });
 
   final int? index, foodQuantity, dismissKey;
-  final VoidCallback increaseItem, decreaseItem;
+  final VoidCallback deleteFavorite;
   final String? foodItem, foodName, foodPrice;
   final Function(DismissDirection)? onDismissible;
 
@@ -84,21 +83,8 @@ class CartItems extends StatelessWidget {
                   ],
                 ),
                 // Quantity
-                Row(
-                  children: [
-                    DecreaseBtn(
-                      onTap: decreaseItem,
-                    ),
-                    const SizedBox(width: 05),
-                    CustomTextOne(
-                      text: foodQuantity.toString(),
-                      fontSize: 18,
-                    ),
-                    const SizedBox(width: 05),
-                    IncreaseBtn(
-                      onTap: increaseItem,
-                    ),
-                  ],
+                DecreaseBtn(
+                  onTap: deleteFavorite,
                 ),
               ],
             ),

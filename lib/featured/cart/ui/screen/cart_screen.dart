@@ -40,7 +40,12 @@ class CartScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 20),
                     child: Consumer<CartProvider>(
                       builder: (context, cartProvider, child) {
-                        return Column(
+                        return cartProvider.foodList.isEmpty || cartProvider.foodList == null?
+                        const Padding(
+                          padding: EdgeInsets.only(top: 190),
+                          child: Center(child: CustomTextOne(text: 'No cart items')),
+                        ) :
+                          Column(
                           children: List.generate(
                               cartProvider.foodList.length, (index) {
                                 final getCart = cartProvider.foodList[index];
@@ -49,17 +54,17 @@ class CartScreen extends StatelessWidget {
                               foodItem: getCart.foodItem,
                               foodName: getCart.foodName,
                               foodQuantity: getCart.quantity,
-                              foodPrice: '${getCart.price! * getCart.quantity}',
+                              foodPrice: (cartProvider.totalPrice(index)).toStringAsFixed(2),
                               increaseItem: () {
                                 cartProvider.getQuantity('+', index);
                               },
                               decreaseItem: () {
-                                cartProvider.getQuantity('-', index);
-                                cartProvider.foodList[index].quantity ==
-                                        0
-                                    ? cartProvider.foodList
-                                        .removeAt(index)
-                                    : const SizedBox();
+                                cartProvider..getQuantity('-', index)
+                               ..removeCartItem('', index);
+                              },
+                              dismissKey: index,
+                              onDismissible: (DismissDirection dismiss){
+                                cartProvider.removeCartItem('dismiss', index);
                               },
                             );
                           }),
@@ -81,26 +86,35 @@ class CartScreen extends StatelessWidget {
                   color: Colors.white,
                   width: double.maxFinite,
                   radius: 12,
-                  child: const TotalPrice(
-                    subtotal: r'$14.20',
-                    deliveryFee: r'$2.10',
-                    total: r'$16.30',
+                  child: Consumer<CartProvider>(
+                    builder: (context, cartProvider, child) {
+                      return TotalPrice(
+                        subtotal: '30',
+                        deliveryFee: r'$2.10',
+                        total: r'$16.30',
+                      );
+                    },
                   ),
                 ),
               ),
               const SizedBox(height: 45),
               // Footer button
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: CustomBtn(
-                  height: 50,
-                  borderRadius: 50,
-                  text: 'Place Order',
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/checkout');
+              Consumer<CartProvider>(builder: (context, cartProvider, child) {
+                return Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: CustomBtn(
+                    height: 50,
+                    borderRadius: 50,
+                    backgroundColor: cartProvider.foodList.isEmpty || cartProvider.foodList == null?
+                    Colors.grey.shade400 : brandColor,
+                    text: 'Place Order',
+                    onPressed: cartProvider.foodList.isEmpty || cartProvider.foodList == null?
+                    null: () {
+                  Navigator.pushNamed(context, '/checkout');
                   },
-                ),
-              )
+                  ),
+                );
+              },)
             ],
           ),
         ),

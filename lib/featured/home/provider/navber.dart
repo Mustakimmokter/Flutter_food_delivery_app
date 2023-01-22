@@ -29,7 +29,6 @@ class NavBerProvider extends ChangeNotifier {
         ? Navigator.pushNamed(context, '/cart')
         : index == 0?_selectedScreenIndex = 0:
     _selectedScreenIndex = index;
-    print(_selectedScreenIndex);
     notifyListeners();
   }
 

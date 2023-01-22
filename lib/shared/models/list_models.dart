@@ -79,6 +79,7 @@ class ModelList {
       PopularFoods(
         foodName: 'Sushi',
         foodItem: 'assets/images/popular_foods/sushi.svg',
+
         price: 3.00,
       ),
       PopularFoods(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_app1/featured/cart/provider/cart_provider.dart';
+import 'package:flutter_food_app1/featured/favorite/provider/favortie_provider.dart';
 import 'package:flutter_food_app1/featured/home/iu/component/index.dart';
 import 'package:flutter_food_app1/featured/home/provider/nearby_rstnt.dart';
 import 'package:flutter_food_app1/featured/home/provider/popular_provider.dart';
@@ -14,6 +16,8 @@ class HomeScreenBody extends StatelessWidget {
     final profileProvider = Provider.of<ProfileProvider>(context);
     final nearRstProvider = Provider.of<NearState>(context);
     final popularFoodsProvider = Provider.of<PopularFoodProvider>(context);
+    final cartProvider = Provider.of<CartProvider>(context);
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
     return Column(
       children: [
         // Header
@@ -26,7 +30,6 @@ class HomeScreenBody extends StatelessWidget {
 
                 Navigator.pushNamed(context, '/profile');
                 profileProvider.getUserProfile();
-                // print('Length: ${profileProvider.albums.length}');
               },
             ),
         // body
@@ -65,8 +68,21 @@ class HomeScreenBody extends StatelessWidget {
                 PopularFoodsList(
                   currentIndex: popularFoodsProvider.currentIndex,
                   foodList: popularFoodsProvider.foodList,
-                  addCart: (index){},
-                  addToFav: (index){},
+                  addCart: (index){
+                    cartProvider.addCart(
+                      context,
+                     food: popularFoodsProvider.foodList[index],
+                     isExist: popularFoodsProvider.foodList[index].isCart,
+                    );
+
+                  },
+                  isFavorite: popularFoodsProvider.foodList[popularFoodsProvider.currentIndex].isFavorite,
+                  addToFav: (index){
+                    favoriteProvider.addFavorite(context,
+                        food: popularFoodsProvider.foodList[index],
+                        isFavorite: popularFoodsProvider.foodList[index].isFavorite,
+                    );
+                  },
                   onChange: (index){
                     popularFoodsProvider.getOnChange(index);
                   },

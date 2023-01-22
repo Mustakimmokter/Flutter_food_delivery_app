@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_app1/featured/cart/provider/cart_provider.dart';
 import 'package:flutter_food_app1/featured/checkout/provider/payment_provider.dart';
+import 'package:flutter_food_app1/featured/favorite/provider/favortie_provider.dart';
 import 'package:flutter_food_app1/featured/home/index.dart';
 import 'package:flutter_food_app1/featured/home/provider/nearby_rstnt.dart';
 import 'package:flutter_food_app1/featured/home/provider/popular_provider.dart';
@@ -55,6 +56,10 @@ class App extends StatelessWidget {
         ChangeNotifierProvider<PaymentProvider>(
           create: (context) {
           return PaymentProvider();
+        },),
+        ChangeNotifierProvider<FavoriteProvider>(
+          create: (context) {
+          return FavoriteProvider();
         },),
       ],
       builder: (context, child) {

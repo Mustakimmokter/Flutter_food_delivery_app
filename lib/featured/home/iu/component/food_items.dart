@@ -68,6 +68,9 @@ class FoodItems extends StatelessWidget {
           ),
         );
       },
-    );
+    )
+    ;
   }
 }
+
+
